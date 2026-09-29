@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de Prestaciones y Comprobante de Liquidación — El Salvador</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Código de Trabajo · Ley del ISR · Ley de Renuncia Voluntaria — El Salvador</p>
+  <h1>Calculadora de prestaciones y comprobante de liquidación</h1>
+  <p class="sub">Calcula prestaciones proporcionales, recargos por jornadas especiales y deducciones de ley, y genera un comprobante en PDF listo para firma.</p>
+
+  <div class="panel">
+    <h2><span class="n">1</span>Datos informativos</h2>
+    <div class="row">
+      <div class="field"><label>Nombre del trabajador(a)</label><input id="nombre" value="Nombre completo"></div>
+      <div class="field"><label>DUI</label><input id="dui" value="00000000-0"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Cargo</label><input id="cargo" value="Cargo"></div>
+      <div class="field"><label>Nombre del patrono / empresa</label><input id="patrono" value="Empresa S.A. de C.V."></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><span class="n">2</span>Salario, antigüedad y causal</h2>
+    <div class="row">
+      <div class="field"><label>Salario mensual contratado (US$)</label><input type="number" id="salario" value="500" min="0" step="0.01"></div>
+      <div class="field"><label>Sector (para salario mínimo)</label>
+        <select id="sector">
+          <option value="408.80" selected>Comercio, servicios, industria</option>
+          <option value="402.32">Maquila textil y confección</option>
+          <option value="305.23">Agroindustria / café / caña</option>
+          <option value="272.53">Agropecuario y otras agrícolas</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Fecha de ingreso</label><input type="date" id="ingreso" value="2022-03-01"></div>
+      <div class="field"><label>Fecha de finalización</label><input type="date" id="fin"></div>
+    </div>
+    <div class="field"><label>Causal de cierre laboral</label>
+      <select id="motivo">
+        <option value="injustificado">Despido sin causa justificada</option>
+        <option value="renuncia">Renuncia voluntaria</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2><span class="n">3</span>Jornadas especiales</h2>
+    <div class="row3">
+      <div class="field"><label>Horas extra diurnas</label><input type="number" id="hed" value="0" min="0" step="0.5"></div>
+      <div class="field"><label>Horas extra nocturnas</label><input type="number" id="hen" value="0" min="0" step="0.5"></div>
+      <div class="field"><label>Días de asueto trabajados</label><input type="number" id="asueto" value="0" min="0" step="1"></div>
+    </div>
+    <div class="field" style="max-width:260px"><label>Días de descanso semanal trabajados</label><input type="number" id="descanso" value="0" min="0" step="1"></div>
+  </div>
+
+  <div class="results" id="results"></div>
+  <p class="note" id="footnote"></p>
+
+  <button id="printBtn">Generar comprobante (PDF / imprimir)</button>
+  <footer>Cálculo estimado según Arts. 58, 177, 196–198 y 402 del Código de Trabajo, la Ley Reguladora de la Prestación Económica por Renuncia Voluntaria (Decreto 592) y la tabla de retención del ISR vigente desde mayo de 2025. No sustituye asesoría del Ministerio de Trabajo ni de un contador o abogado autorizado.</footer>
+</div>
+
+<div id="printSheet"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
